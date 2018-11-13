@@ -5,10 +5,12 @@
 //  Created by Weston Chan, Cale Povilonis, Damon Jones.
 //
 
-#include "core.h"
+#include "Date.h"
+#include "Event.h"
 
-#ifndef TEST
 int main(int argc, const char * argv[]) {
-    return core_main(argc, argv);
+	Event * e = new_Event("03:30", "04:30");
+	printf("Hello World\n");
+	printf("Start Time: %s\nEnd Time: %s\n", e -> start, e-> end);
+    return 0;
 }
-#endif

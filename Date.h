@@ -1,16 +1,16 @@
 //
-//  core.h
+//  Date.h
 //  Week 8 
 //
 //  Created by Ashley Coleman on 7/5/18.
 //  Copyright © 2018 Ashley Coleman. All rights reserved.
 //
 
-#ifndef core_h
-#define core_h
+#ifndef Date_h
+#define Date_h
 
 #include <stdio.h>
 
-int core_main(int argc, const char * argv[]);
 
-#endif /* core_h */
+
+#endif /* Date_h */
