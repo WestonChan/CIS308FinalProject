@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-
+typedef struct Date {} Date;
 
 #endif /* Date_h */
