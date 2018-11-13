@@ -1,0 +1,9 @@
+Cale Povilonis Weston Chan Damon Jones
+
+    We want to make a calendar application that will hold times and events which will be able to be displayed (non GUI). There will be functions for adding events and displaying events within a specified time period. Also, there will be different types of events such as school, work, meals, etc, that can be specified by the user. The user can search for a date and the calendar/events will be displayed to the user. The user can also edit the time intervals that the events are displayed in and be able to view event details and make modifications to already created events. The user can also write out/export a range of dates to a file in the proper displayed format. The user can also import schedules/events if they are in the proper format.
+
+    We wanted to make this program as we thought it was an interesting and fun idea to implement and make. We think this could implement the project requirements while having us learn new concepts and ideas in C and expanding our knowledge of the language. Also, we feel this project would be interesting to demo/show to our fellow peers.
+
+    We do not think we will need to include any external libraries. We will most likely use structs for the events, days, months, year, etc. We will use file I/O for importing and exporting schedules. We will use enums to represent the type of events. We will most likely implement a good amount of functions for all the features of the program.
+
+    Overall we are excited to make this project and think it will be a great learning experience.
