@@ -1,9 +1,8 @@
 //
-//  main.c 
-//  Week 8 
+//  main.c
+//  CIS 308 Project Final
 //
-//  Created by Ashley Coleman on 7/5/18.
-//  Copyright © 2018 Ashley Coleman. All rights reserved.
+//  Created by Weston Chan, Cale Povilonis, Damon Jones.
 //
 
 #include "core.h"
