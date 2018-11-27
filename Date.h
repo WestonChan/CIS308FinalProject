@@ -11,10 +11,11 @@
 #include "Event.h"
 #include <stdio.h>
 
+char months[12][10] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 typedef enum Month {January, February, March, April, May, June, July, August, September, October, November, December} Month;
 
 typedef struct Date {
-	Event event[48];
+	Event * event;
 	int day;
 	Month month;
 	int year;
@@ -22,5 +23,5 @@ typedef struct Date {
 
 Date * new_date(Event event[48], int day, Month month, int year);
 
-char * toString(Date * day);
+void toDateString(Date * day, char * string);
 #endif /* Date_h */

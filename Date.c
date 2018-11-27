@@ -11,7 +11,7 @@
 #include <string.h>
 
 Date * new_date(Event event[48], int day, Month month, int year) {
-	if  (event == NULL || month == NULL || (day < 0 && day > 31) || year < 0) { return NULL;}
+	if  (event == NULL || (day < 0 && day > 31) || year < 0) { return NULL;}
 	
 	Date * d = malloc(sizeof(Date));
 	d->event = event;
@@ -21,3 +21,14 @@ Date * new_date(Event event[48], int day, Month month, int year) {
 	return d;
 }
 
+void toDateString(Date * day, char * string) {
+	strcat(string, months[day->month]);
+	strcat(string, " ");
+	char day1[3];
+	sprintf(day1, "%d", day->day);
+	strcat(string, day1);
+	strcat(string, " ");
+	char year1[5];
+	sprintf(year1, "%d", day->year);
+	strcat(string, year1);
+}
