@@ -22,12 +22,5 @@ typedef struct Date {
 
 Date * new_date(Event event[48], int day, Month month, int year);
 
-char * toString();
-
-Event * getEventsList();
-
-int getDay();
-int getYear();
-Month * getMonth();
-
+char * toString(Date * day);
 #endif /* Date_h */
