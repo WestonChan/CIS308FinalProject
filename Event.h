@@ -10,7 +10,6 @@
 #define Event_h
 
 #include <stdio.h>
-#include "Date.h"
 
 #define TYPELENGTH 51
 #define TITLELENGTH 51
@@ -23,14 +22,13 @@ char typeNames[3][TYPELENGTH];
 
 typedef struct Event {
 	EventType type;
-	Date * day;
 	char start[TIMELENGTH];
 	char end[TIMELENGTH];
 	char title[TITLELENGTH];
 	char desc[DESCLENGTH];
 } Event;
 
-Event * new_Event(EventType type, Date * day, char * start, char * end, char * title, char * desc);
+Event * new_Event(EventType type, char * start, char * end, char * title, char * desc);
 
 EventType getType(char type[TYPELENGTH]);
 
