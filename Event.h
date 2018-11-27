@@ -33,6 +33,6 @@ EventType getType(char type[TYPELENGTH]);
 
 void setTypeNames(char type0[TYPELENGTH], char type1[TYPELENGTH], char type2[TYPELENGTH]);
 
-void toEventString(Event * e, char * str);
+char * toEventString(Event * e, char * str);
 
 #endif /* Event_h */
