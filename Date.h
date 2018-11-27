@@ -24,7 +24,7 @@ Date * new_date(Event event[48], int day, Month month, int year);
 
 char * toString();
 
-Event[] getEventsList();
+Event * getEventsList();
 
 int getDay();
 int getYear();
