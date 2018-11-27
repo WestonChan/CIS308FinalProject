@@ -10,8 +10,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+char months1[12][10] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 Date * new_date(Event event[48], int day, Month month, int year) {
-	if  (event == NULL || (day < 0 && day > 31) || year < 0) { return NULL;}
+	if  (event == NULL || (day < 0 || day > 31) || year < 0) { return NULL;}
 	
 	Date * d = malloc(sizeof(Date));
 	d->event = event;
@@ -22,7 +23,7 @@ Date * new_date(Event event[48], int day, Month month, int year) {
 }
 
 void toDateString(Date * day, char * string) {
-	strcat(string, months[day->month]);
+	strcat(string, months1[day->month]);
 	strcat(string, " ");
 	char day1[3];
 	sprintf(day1, "%d", day->day);
