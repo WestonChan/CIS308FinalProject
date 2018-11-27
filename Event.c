@@ -40,3 +40,11 @@ void setTypeNames(char type0[51], char type1[51], char type2[51]) {
 	strcpy(typeNames[1], type1);
 	strcpy(typeNames[2], type2);
 }
+
+char * toString(Event * e) {
+	char str[TITLELENGTH + DESCLENGTH];
+
+	strcat(str, e -> title);
+	strcat(str, "\n\n");
+	strcat(str, e -> desc);
+}
