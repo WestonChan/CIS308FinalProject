@@ -14,6 +14,8 @@
 
 Event * new_Event(EventType type, Date * day, char * start, char * end, char * title, char * desc) {
 	if(day == NULL || start == NULL || end == NULL || title == NULL || desc == NULL) return NULL;
+	if(strlen(start) >= TIMELENGTH || strlen(end) >= TIMELENGTH|| strlen(title) >= TITLELENGTH ||
+		strlen(desc) >= DESCLENGTH) return NULL;
 
 	Event * e = malloc(sizeof(Event));
 	

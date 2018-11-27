@@ -12,24 +12,29 @@
 #include <stdio.h>
 #include "Date.h"
 
+#define TYPELENGTH 51
+#define TITLELENGTH 51
+#define TIMELENGTH 6
+#define DESCLENGTH 201
+
 typedef enum EventType {Calendar0, Calendar1, Calendar2} EventType;
 
-char typeNames[3][51];
+char typeNames[3][TYPELENGTH];
 
 typedef struct Event {
 	EventType type;
 	Date * day;
-	char start[6];
-	char end[6];
-	char title[51];
-	char desc[201];
+	char start[TIMELENGTH];
+	char end[TIMELENGTH];
+	char title[TITLELENGTH];
+	char desc[DESCLENGTH];
 } Event;
 
 Event * new_Event(EventType type, Date * day, char * start, char * end, char * title, char * desc);
 
-EventType getType(char type[51]);
+EventType getType(char type[TYPELENGTH]);
 
-void setTypeNames(char type0[51], char type1[51], char type2[51]);
+void setTypeNames(char type0[TYPELENGTH], char type1[TYPELENGTH], char type2[TYPELENGTH]);
 
 char * toString();
 
