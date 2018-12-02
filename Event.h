@@ -13,7 +13,6 @@
 
 #define TYPELENGTH 21
 #define TITLELENGTH 21
-#define TIMELENGTH 6
 #define DESCLENGTH 201
 
 typedef enum EventType {Calendar0, Calendar1, Calendar2} EventType;
@@ -21,13 +20,13 @@ static char typeNames[3][TYPELENGTH];
 
 typedef struct Event {
 	EventType type;
-	char start[TIMELENGTH];
-	char end[TIMELENGTH];
+	int start;
+	int end;
 	char title[TITLELENGTH];
 	char desc[DESCLENGTH];
 } Event;
 
-Event * new_Event(EventType type, char * start, char * end, char * title, char * desc);
+Event * new_Event(EventType type, int start, int end, char * title, char * desc);
 
 EventType getType(char type[TYPELENGTH]);
 

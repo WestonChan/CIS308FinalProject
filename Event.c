@@ -12,16 +12,16 @@
 
 
 
-Event * new_Event(EventType type, char * start, char * end, char * title, char * desc) {
-	if(start == NULL || end == NULL || title == NULL || desc == NULL) return NULL;
-	if(strlen(start) >= TIMELENGTH || strlen(end) >= TIMELENGTH|| strlen(title) >= TITLELENGTH ||
+Event * new_Event(EventType type, int start, int end, char * title, char * desc) {
+	if(title == NULL || desc == NULL) return NULL;
+	if(start < 0 || start >= 24 || end < 0 || end >= 24|| strlen(title) >= TITLELENGTH ||
 		strlen(desc) >= DESCLENGTH) return NULL;
 
 	Event * e = malloc(sizeof(Event));
 	
 	e -> type = type;
-	strcpy(e -> start, start);
-	strcpy(e -> end, end);
+	e -> start = start;
+	e -> end = end;
 	strcpy(e -> title, title);
 	strcpy(e -> desc, desc);
 	return e;
