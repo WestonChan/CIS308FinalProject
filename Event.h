@@ -11,13 +11,13 @@
 
 #include <stdio.h>
 
-#define TYPELENGTH 51
-#define TITLELENGTH 51
+#define TYPELENGTH 21
+#define TITLELENGTH 21
 #define TIMELENGTH 6
 #define DESCLENGTH 201
 
 typedef enum EventType {Calendar0, Calendar1, Calendar2} EventType;
-char typeNames[3][TYPELENGTH];
+static char typeNames[3][TYPELENGTH];
 
 typedef struct Event {
 	EventType type;

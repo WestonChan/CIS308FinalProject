@@ -42,7 +42,7 @@ void setTypeNames(char type0[51], char type1[51], char type2[51]) {
 }
 
 char * toEventString(Event * e, char * str) {
-
+	str[0] = '\0';
 	strcat(str, e -> title);
 	strcat(str, "\n\n");
 	strcat(str, e -> desc);
