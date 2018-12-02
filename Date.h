@@ -15,13 +15,13 @@
 typedef enum Month {January, February, March, April, May, June, July, August, September, October, November, December} Month;
 
 typedef struct Date {
-	Event * event[24];
+	Event * event[3][24];
 	int day;
 	Month month;
 	int year;
 } Date;
 
-Date * new_date(Event * event[24], int day, Month month, int year);
+Date * new_date(Event * event[3][24], int day, Month month, int year);
 
 Date * addEvent(Date * day, Event * e);
 

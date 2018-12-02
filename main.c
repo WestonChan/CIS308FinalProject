@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
 	setTypeNames("Calendar0", "Calendar1", "Calendar2");
-	Event * e = new_Event(0,3, 4, "Lunch", "A midday meal.");
+	Event * e = new_Event(2,3, 4, "Lunch", "A midday meal.");
 
 	printf("Hello World\n");
 	printf("Start Time: %d\nEnd Time: %d\n", e -> start, e-> end);
@@ -21,9 +21,10 @@ int main(int argc, const char * argv[]) {
 	printf("%s\n\n", toEventString(e, str));
 
 	Date * day = malloc(sizeof(Date));
-	Event * events[24];	
-	for(int i = 0; i < 24; i++)
-		events[i] = NULL;
+	Event * events[3][24];	
+	for(int i = 0; i < 3; i++)
+		for(int j = 0; j < 24; j++)
+		events[i][j] = NULL;
 	
 	day = new_date(events, 02, August, 2016);
 
