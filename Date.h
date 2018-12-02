@@ -23,6 +23,8 @@ typedef struct Date {
 
 Date * new_date(Event * event[3][24], int day, Month month, int year);
 
+char * getMonth(Date * day);
+
 Date * addEvent(Date * day, Event * e);
 
 char * toDateString(Date * day, char * str);

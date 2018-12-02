@@ -30,6 +30,14 @@ Date * addEvent(Date * day, Event * e) {
 	}
 }
 
+
+char * getMonth(Date * day){
+	char * monthr = malloc(sizeof(months1[0]));
+	strcpy(monthr, months1[day->month]);
+	return monthr;
+}
+
+
 char * toDateString(Date * day, char * str) {
 
 	str[0] = '\0';
