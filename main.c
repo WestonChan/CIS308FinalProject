@@ -21,11 +21,15 @@ int main(int argc, const char * argv[]) {
 	printf("%s\n\n", toEventString(e, str));
 
 	Date * day = malloc(sizeof(Date));
-	Event * events[24];
+	Event * events[24];	
+	for(int i = 0; i < 24; i++)
+		events[i] = NULL;
+	
 	day = new_date(events, 02, August, 2016);
 	
 	addEvent(day, e);
 
+	//printf("%s\n", toEventString(day -> event[3], str));
 	printf("%s\n", toDateString(day, str));
 	
     return 0;

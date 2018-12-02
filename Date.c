@@ -26,11 +26,12 @@ Date * addEvent(Date * day, Event * e) {
 	int time = e->start[0]-'0';	
 	while(time < e -> end[0]-'0'){
 		day->event[time] = e;
-		time ++;
+		time++;
 	}
 }
 
 char * toDateString(Date * day, char * str) {
+
 	str[0] = '\0';
 /*
 	strcat(string, months1[day->month]);
@@ -51,13 +52,17 @@ char * toDateString(Date * day, char * str) {
 		strcat(str, ":00\t");
 		
 		char title[TITLELENGTH];
-		strcpy(title, day -> event[i] ->title);
-		while(strlen(title) != TITLELENGTH - 1) {
-			strcat(title, " ");
+		
+		if(day->event[i] == NULL) strcat(str, "                    ");
+		else {
+			strcpy(title, day -> event[i] ->title);
+			while(strlen(title) != TITLELENGTH - 1) {
+				strcat(title, " ");
+			}
+			strcat(str, title);
 		}
-		strcat(str, title);
-
 		strcat(str, "\n");
 	}
+
 	return str;
 }
