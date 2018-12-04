@@ -6,7 +6,7 @@
 #include "Event.h"
 
 typedef struct LinkedList{
-	Date day;
+	Date * day;
 	struct LinkedList * next;
 }LinkedList;
 
