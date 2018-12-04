@@ -39,20 +39,27 @@ void export(LinkedList * l) {
 
 LinkedList * import() {
 	FILE * fp = fopen("Schedule.rofl", "r");
+	int whiletest = 100;
 	char temp[DESCLENGTH + TITLELENGTH + 10 + 10];
 	char * token;
 	fscanf(fp, "%s", temp);
 
+	char var1[21];
+	char var2[21];
+	char var3[21];
 	token = strtok(temp, "^");
-	strcpy(typeNames[0], token);
-	printf("%s\n",token);
-	setTypeNames("one","two","thress");
+	strcpy(var1, token);
+	//printf("%s\n",var1);
 	token = strtok(NULL, "^");
-	strcpy(typeNames[1], token);
+	strcpy(var2, token);
+	//printf("%s\n",var2);
 
 	token = strtok(NULL, "^");
-	strcpy(typeNames[2], token);
-	
+	strcpy(var3, token);
+	//printf("%s\n",var3);
+
+	setTypeNames(var1,var2,var3);
+	//printtypes();
 	
 	LinkedList * prev = NULL;
 	LinkedList * first;
@@ -109,6 +116,7 @@ LinkedList * import() {
 				event[type][line%24] -> start = start;
 				event[type][line%24] -> end = end;
 				strcpy(event[type][line%24] -> title, title);
+				//printf("%s\n",event[type][line%24] -> title);
 				strcpy(event[type][line%24] -> desc, desc);
 
 			}
@@ -116,6 +124,17 @@ LinkedList * import() {
 		if(line == 71) {
 			LinkedList * cur = malloc(sizeof(LinkedList));
 			Date * d = new_date(event, day, month, year);
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 24; j++){
+					printf("%s\n", d->event[i][j]);
+				}
+			}
+			//printf("%d\n", year);
+			//printf("%d\n", day);
+			//printf("%d\n", whiletest);
+			// if (d->event[2][20]->title != NULL){
+			// printf("%s\n", d->event[2][20]->title);}
+			whiletest++;
 			cur -> day = d;
 			char str[10000];
 			line = -2;
@@ -162,12 +181,15 @@ int main(int argc, const char * argv[]) {
 
 	export(l);*/
 	LinkedList * l = import();
-	while(l != NULL) {
-		char str[10000];
-		toDateString(l -> day, str);
-		l = l -> next;
-		printf("%s\n", str);
-	}	
-	
+	char str1[10000];
+	toDateString(l->day, str1);
+	printf("%s\n", str1);
+	// while(l != NULL) {
+	// 	char str[10000];
+	// 	toDateString(l -> day, str);
+	// 	l = l -> next;
+	// 	printf("%s\n", str);
+	// }	
+	//printtypes();
     return 0;
 }

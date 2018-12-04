@@ -39,6 +39,18 @@ void setTypeNames(char type0[TITLELENGTH], char type1[TITLELENGTH], char type2[T
 	strcpy(typeNames[0], type0);
 	strcpy(typeNames[1], type1);
 	strcpy(typeNames[2], type2);
+	//printf("%s\n",typeNames[0]);
+	//printf("%s\n",typeNames[1]);
+	//printf("%s\n",typeNames[2]);
+}
+void printtypes(){
+	printf("%s\n",typeNames[0]);
+	printf("%s\n",typeNames[1]);
+	printf("%s\n",typeNames[2]);
+}
+
+char * returnTypes(int i ) {
+	return typeNames[i];
 }
 
 char * toEventString(Event * e, char * str) {

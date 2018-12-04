@@ -31,6 +31,10 @@ EventType getType(char type[TITLELENGTH]);
 
 void setTypeNames(char type0[TITLELENGTH], char type1[TITLELENGTH], char type2[TITLELENGTH]);
 
+void printtypes();
+
+char * returnTypes(int i);
+
 char * toEventString(Event * e, char * str);
 
 #endif /* Event_h */

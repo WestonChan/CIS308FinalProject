@@ -50,9 +50,11 @@ char * toDateString(Date * day, char * str) {
 	char title[TITLELENGTH];
 	
 	strcat(str, "     \t");
-	
+	//printtypes();
 	for(int i = 0; i < 3; i++) {
-		strcpy(title, typeNames[i]);
+		//printtypes();
+		// setTypeNames("Mouse","cat","House");
+		strcpy(title, returnTypes(i));
 		while(strlen(title) != TITLELENGTH - 1) {
 			strcat(title, " ");
 		}
@@ -61,7 +63,7 @@ char * toDateString(Date * day, char * str) {
 	}
 	
 	strcat(str, "\n\n");
-
+	//printf("%s", str);
 	char tempstr[2];
 	
 	for(int i = 0; i < 24; i++) {
