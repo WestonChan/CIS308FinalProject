@@ -27,9 +27,13 @@ typedef struct Event {
 
 Event * new_Event(EventType type, int start, int end, char * title, char * desc);
 
-EventType getType(char type[TITLELENGTH]);
-
 char * toEventString(Event * e, char * str);
+
+void setTypeNames(char type0[TITLELENGTH], char type1[TITLELENGTH], char type2[TITLELENGTH]);
+
+void printTypes();
+
+char * returnTypes(int i);
 
 int Equals(Event * e1, Event * e2);
 

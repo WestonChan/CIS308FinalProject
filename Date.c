@@ -33,7 +33,6 @@ Date * addEvent(Date * day, Event * e) {
 }
 
 char * toDateString(Date * day, char * str) {
-	printf("%s\n", typeNames[0]);
 	if(day == NULL || str == NULL) return "";
 	str[0] = '\0';
 
@@ -42,7 +41,8 @@ char * toDateString(Date * day, char * str) {
 	strcat(str, "     \t");
 	
 	for(int i = 0; i < 3; i++) {
-		strcpy(title, typeNames[i]);
+		//printTypes();
+		strcpy(title, returnTypes(i));
 		while(strlen(title) != TITLELENGTH - 1) {
 			strcat(title, " ");
 		}

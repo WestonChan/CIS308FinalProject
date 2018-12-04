@@ -15,7 +15,14 @@
 void export(LinkedList * l) {
 	FILE * fp = fopen("Schedule.rofl", "w");
 
-	fprintf(fp,"%s^%s^%s\n", typeNames[0], typeNames[1], typeNames[2]);
+	char vars[3][21];
+	//printTypes();
+	for (int i = 0; i < 3; i++) {
+		//printf("%s", returnTypes(i));
+		strcpy(vars[i],returnTypes(i));
+	}
+
+	fprintf(fp,"%s^%s^%s", vars[0], vars[1], vars[2]);
 
 	Event * events[72];
 	int numEvents = 0;
@@ -26,10 +33,11 @@ void export(LinkedList * l) {
 				Event * e = l->day->event[j][i];
 				if(e!= NULL) {
 					int different = 1;
-					for(int i = 0; i < numEvents; i++)
-						if(Equals(events[i], e) == 0) different = 0;
+					for(int i = 0; i < numEvents; i++){
+						//printf("%s\n", e->title);
+						if(Equals(events[i], e) == 1) different = 0;}
 					if(different == 1) {
-						fprintf(fp, "%d^%d^%d^%s^%s\n", e->type, e->start, e->end, e->title, e->desc);
+						fprintf(fp, "%d^%d^%d^%s^%s", e->type, e->start, e->end, e->title, e->desc);
 						events[numEvents] = e;
 						numEvents++;
 					}
@@ -47,18 +55,23 @@ LinkedList * import() {
 	FILE * fp = fopen("Schedule.rofl", "r");
 	char temp[DESCLENGTH + TITLELENGTH + 10 + 10];
 	char * token;
-	fscanf(fp, "%s", temp);
-
+	fgets(temp, DESCLENGTH + TITLELENGTH + 10 + 10, fp);
+	
+	char var1[21];
+	char var2[21];
+	char var3[21];
 	token = strtok(temp, "^");
-	strcpy(typeNames[0], token);
+	strcpy(var1, token);
 
 	token = strtok(NULL, "^");
-	strcpy(typeNames[1], token);
-
+	strcpy(var2, token);
+	//printf("%s\n", token);
 	token = strtok(NULL, "^");
-	strcpy(typeNames[2], token);
+	strcpy(var3, token);
 	
-	
+	setTypeNames(var1,var2,var3);
+	//printTypes();
+
 	LinkedList * prev = NULL;
 	LinkedList * first;
 
@@ -69,8 +82,8 @@ LinkedList * import() {
 	typedef enum LineType{Da, Ev}LineType;
 
 	LineType lt = Da;
-	while(fscanf(fp, "%s", temp) == 1) {
-		if(numEvents != 0 && strcmp(temp, "")) {
+	while(fgets(temp, DESCLENGTH + TITLELENGTH + 10 + 10, fp) != NULL) {
+		if(numEvents != 0 && strcmp(temp, "\n") == 0) {
 			lt = Da;
 			Event * events[3][24];
 			for(int i = 0; i < 3; i++)
@@ -80,24 +93,21 @@ LinkedList * import() {
 			Date * d = new_date(events, day, month, year);
 			for(int i = 0; i < numEvents; i++)
 				addEvent(d, event[i]);
-char str[10000];
-printf("%s\n",toDateString(d,str));
+
 			numEvents = 0;
 
 			LinkedList * cur = malloc(sizeof(LinkedList));
 			cur -> day = d;
 
-printf("%s\n",toDateString(cur->day,str));
-printf("Hiya World%s\n",toDateString(cur->day,str));
 			if(first == NULL) first = cur; 
 			if(prev == NULL) {
-				prev -> next = cur;
 				prev = cur;
 			}
-			else prev = cur;
+			else {prev -> next = cur; prev = cur;}
 		}
-		else if(strcmp(temp, "")) {}
+		else if(strcmp(temp, "\n") == 0) {}
 		else if(lt == Da){
+
 			lt = Ev;
 			token = strtok(temp, "^");
 
@@ -111,10 +121,8 @@ printf("Hiya World%s\n",toDateString(cur->day,str));
 			token = strtok(NULL, "^");
 			if(token == NULL) year = 0;
 			else year = atoi(token);
-
 		
-		} else if (lt == Ev){
-
+		} else if (lt == Ev){("%s\n", temp);
 				token = strtok(temp, "^");
 				int type;
 				if(token == NULL) type = 0;
@@ -148,8 +156,8 @@ printf("Hiya World%s\n",toDateString(cur->day,str));
 	return first;
 }
 
-int main(int argc, const char * argv[]) { /*
-
+int main(int argc, const char * argv[]) { 
+/*
 	Event * e = new_Event(2,3,24, "Lunch", "A midday meal.");
 
 	printf("Hello World\n");
@@ -157,7 +165,6 @@ int main(int argc, const char * argv[]) { /*
 	printf("Calendar is: %s\n\n",typeNames[e -> type]);
 
 	char str[10000];
-	printf("%s\n\n", toEventString(e, str));
 
 	Date * day = malloc(sizeof(Date));
 	Event * events[3][24];	
@@ -168,8 +175,6 @@ int main(int argc, const char * argv[]) { /*
 	day = new_date(events, 02, August, 2016);
 
 	addEvent(day, e);
-	
-	printf("%s\n", toDateString(day, str));
 
 	LinkedList * l = malloc(sizeof(LinkedList));
 	LinkedList * l2 = malloc(sizeof(LinkedList));
@@ -177,18 +182,16 @@ int main(int argc, const char * argv[]) { /*
 	l2 -> day = day;
 	l -> next = l2;
 
-	export(l);
-*/
-	char str[10000];
-	LinkedList * ls = import();
-	if(ls != NULL)
-	printf("%s\n",toDateString(ls->day,str));
+	//export(l);*/
 
+	LinkedList * ls = import();
+	LinkedList * head = ls;
 	while(ls != NULL) {
 		char str[10000];
 		printf("%s\n",toDateString(ls->day,str));
 		ls = ls -> next;
 	}	
 	
+	export(head);
     return 0;
 }
