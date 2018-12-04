@@ -9,6 +9,15 @@
 #include "Date.h"
 #include "Event.h"
 
+
+void sendToFile(Date * day) {
+	FILE * fp = fopen("Schedule.txt","w");
+	char str[4000];
+	fprintf(fp,"%i %s %i\n%s\n", day->day, getMonth(day), day->year, toDateString(day,str));
+	fclose(fp);
+}
+
+
 int main(int argc, const char * argv[]) {
 	setTypeNames("Calendar0", "Calendar1", "Calendar2");
 	Event * e = new_Event(2,3,24, "Lunch", "A midday meal.");
