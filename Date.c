@@ -78,6 +78,6 @@ char * toDateString(Date * day, char * str) {
 return str;
 }
 
-int dateEquals(Date * day1, Date * day2) {
-	return day1->year == day2->year && day1->month == day2->month && day1->day == day2->day;
+int dateEquals(Date * day1, int day, int month, int year) {
+	if( day1->year == year && day1->month == month && day1->day == day) return 0; return 1;
 }
