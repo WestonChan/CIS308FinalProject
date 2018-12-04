@@ -27,7 +27,7 @@ Event * new_Event(EventType type, int start, int end, char * title, char * desc)
 	return e;
 }
 
-EventType getType(char type[51]) {
+EventType getType(char type[TITLELENGTH]) {
 	if(strcmp(typeNames[0], type) == 0) return 0;
 	if(strcmp(typeNames[1], type) == 0) return 1;
 	if(strcmp(typeNames[2], type) == 0) return 2;
@@ -35,7 +35,7 @@ EventType getType(char type[51]) {
 	return -1;
 }
 
-void setTypeNames(char type0[51], char type1[51], char type2[51]) {
+void setTypeNames(char type0[TITLELENGTH], char type1[TITLELENGTH], char type2[TITLELENGTH]) {
 	strcpy(typeNames[0], type0);
 	strcpy(typeNames[1], type1);
 	strcpy(typeNames[2], type2);

@@ -15,7 +15,7 @@
 #define DESCLENGTH 201
 
 typedef enum EventType {Calendar0, Calendar1, Calendar2} EventType;
-static char typeNames[3][TITLELENGTH] = {"Calendar0","Calendar1","Calendar2",};
+static char typeNames[3][TITLELENGTH] = {"Calendar0","Calendar1","Calendar2"};
 
 typedef struct Event {
 	EventType type;

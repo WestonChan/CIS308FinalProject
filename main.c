@@ -6,6 +6,7 @@
 //
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include "Date.h"
 #include "Event.h"
@@ -38,80 +39,99 @@ void export(LinkedList * l) {
 
 LinkedList * import() {
 	FILE * fp = fopen("Schedule.rofl", "r");
-	char temp[999999999999];
+	char temp[DESCLENGTH + TITLELENGTH + 10 + 10];
 	char * token;
 	fscanf(fp, "%s", temp);
 
 	token = strtok(temp, "^");
 	strcpy(typeNames[0], token);
-
+	printf("%s\n",token);
+	setTypeNames("one","two","thress");
 	token = strtok(NULL, "^");
 	strcpy(typeNames[1], token);
 
 	token = strtok(NULL, "^");
 	strcpy(typeNames[2], token);
 	
+	
 	LinkedList * prev = NULL;
 	LinkedList * first;
 	int line = -1;
 	Event * event[3][24];
+	for(int i = 0; i < 3; i++)
+		for(int j = 0; j < 24; j++)
+		event[i][j] = new_Event(0,0,0,"","");
 	int day, month, year;
 	
-	while(fscanf(fp, "%s", temp) != EOF) {/*
+	while(fscanf(fp, "%s", temp) == 1) {
 		if(line == -1){
 			token = strtok(temp, "^");
-			day = atoi(token);
+
+			if(token == NULL) day = 0;
+			else day = atoi(token);
 
 			token = strtok(NULL, "^");
-			month = atoi(token);
+			if(token == NULL) month = 0;
+			else month = atoi(token);
 
 			token = strtok(NULL, "^");
-			year = atoi(token);
+			if(token == NULL) year = 0;
+			else year = atoi(token);
 
 		
 		} else if (line >= 0){
 				token = strtok(temp, "^");
-				int type = atoi(token);
+				int type;
+				if(token == NULL) type = 0;
+				else type = atoi(token);
 	
 				token = strtok(NULL, "^");
-				int start = atoi(token);
+				int start;
+				if(token == NULL) start = 0;
+				else start = atoi(token);
 	
 				token = strtok(NULL, "^");
-				int end = atoi(token);
+				int end;
+				if(token == NULL) end = 0;
+				else end = atoi(token);
 	
 				token = strtok(NULL, "^");
 				char title[TITLELENGTH];
-				strcpy(title, token);
+				if(token == NULL) strcpy(title, "");
+				else strcpy(title, token);
 
 				token = strtok(NULL, "^");
 				char desc[DESCLENGTH];
-				strcpy(desc, token);
+				if(token == NULL) strcpy(desc, "");
+				else strcpy(desc, token);
 
-				Event * e = new_Event(type, start, end, title, desc);
-	
-				event[type][line%24] = e;
+				event[type][line%24] -> type = type;
+				event[type][line%24] -> start = start;
+				event[type][line%24] -> end = end;
+				strcpy(event[type][line%24] -> title, title);
+				strcpy(event[type][line%24] -> desc, desc);
 
-			}*/
+			}
 		
 		if(line == 71) {
 			LinkedList * cur = malloc(sizeof(LinkedList));
 			Date * d = new_date(event, day, month, year);
 			cur -> day = d;
+			char str[10000];
 			line = -2;
-			if(prev == NULL) first = cur;
+			if(first == NULL) first = cur;
 			if(prev != NULL) prev = prev -> next;
 				prev = cur;
 			
-		}
-		else line++;
+		}else 
+			line++;
 	}
 	fclose(fp);
 	return first;
-	LinkedList * cur = malloc(sizeof(LinkedList));
-return cur;
 }
 
-int main(int argc, const char * argv[]) {/*
+int main(int argc, const char * argv[]) {
+/*
 	setTypeNames("Calendar0", "Calendar1", "Calendar2");
 	Event * e = new_Event(2,3,24, "Lunch", "A midday meal.");
 
