@@ -23,6 +23,8 @@ Date * new_date(Event * event[3][24], int day, Month month, int year) {
 }
 
 Date * addEvent(Date * day, Event * e) {
+	if(day == NULL || e == NULL) return NULL;
+	if(e->start < 0 || e->end > 24) return NULL;
 	int time = e->start;	
 	while(time < e->end){
 		day->event[e -> type][time] = e;
@@ -31,7 +33,7 @@ Date * addEvent(Date * day, Event * e) {
 }
 
 char * toDateString(Date * day, char * str) {
-
+	if(day == NULL || str == NULL) return "";
 	str[0] = '\0';
 /*
 	strcat(string, months1[day->month]);
@@ -69,21 +71,21 @@ char * toDateString(Date * day, char * str) {
 		strcat(str, ":00\t");
 		
 		for(int j = 0; j < 3; j++) {
-		if(day->event[j][i] == NULL) 
-			for(int k = 0; k < TITLELENGTH-1; k++)
-				strcat(str, " ");
+			if(day->event[j][i] == NULL) 
+				for(int k = 0; k < TITLELENGTH-1; k++)
+					strcat(str, " ");
 			else {
 				strcpy(title, day -> event[j][i] ->title);
 				while(strlen(title) != TITLELENGTH - 1) {
 					strcat(title, " ");
 				}
-				strcat(str, title);
+			strcat(str, title);
 			}
 		strcat(str, "\t");
 		}
 	strcat(str, "\n");
-	}
+}
 	
 
-	return str;
+return str;
 }

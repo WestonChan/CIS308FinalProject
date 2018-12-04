@@ -14,7 +14,7 @@
 
 Event * new_Event(EventType type, int start, int end, char * title, char * desc) {
 	if(title == NULL || desc == NULL) return NULL;
-	if(start < 0 || start >= 24 || end < 0 || end >= 24|| strlen(title) >= TITLELENGTH ||
+	if(start < 0 || start >= 24 || end < 0 || end > 24|| strlen(title) >= TITLELENGTH ||
 		strlen(desc) >= DESCLENGTH) return NULL;
 
 	Event * e = malloc(sizeof(Event));
