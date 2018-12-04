@@ -88,6 +88,7 @@ printf("%s\n",toDateString(d,str));
 			cur -> day = d;
 
 printf("%s\n",toDateString(cur->day,str));
+printf("Hiya World%s\n",toDateString(cur->day,str));
 			if(first == NULL) first = cur; 
 			if(prev == NULL) {
 				prev -> next = cur;
@@ -113,7 +114,6 @@ printf("%s\n",toDateString(cur->day,str));
 
 		
 		} else if (lt == Ev){
-				if(strcmp(temp,"^^^^") == 0) continue;
 
 				token = strtok(temp, "^");
 				int type;
