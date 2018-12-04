@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "Date.h"
 #include "Event.h"
+#include "LinkedList.h"
 
 
 void sendToFile(Date * day) {
