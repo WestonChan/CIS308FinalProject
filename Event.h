@@ -29,8 +29,8 @@ Event * new_Event(EventType type, int start, int end, char * title, char * desc)
 
 EventType getType(char type[TITLELENGTH]);
 
-void setTypeNames(char type0[TITLELENGTH], char type1[TITLELENGTH], char type2[TITLELENGTH]);
-
 char * toEventString(Event * e, char * str);
+
+int Equals(Event * e1, Event * e2);
 
 #endif /* Event_h */

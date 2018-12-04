@@ -33,19 +33,9 @@ Date * addEvent(Date * day, Event * e) {
 }
 
 char * toDateString(Date * day, char * str) {
+	printf("%s\n", typeNames[0]);
 	if(day == NULL || str == NULL) return "";
 	str[0] = '\0';
-/*
-	strcat(string, months1[day->month]);
-	strcat(string, " ");
-	char day1[3];
-	sprintf(day1, "%d", day->day);
-	strcat(string, day1);
-	strcat(string, " ");
-	char year1[5];
-	sprintf(year1, "%d", day->year);
-	strcat(string, year1);
-*/
 
 	char title[TITLELENGTH];
 	
