@@ -26,4 +26,6 @@ Date * new_date(Event * event[3][24], int day, Month month, int year);
 Date * addEvent(Date * day, Event * e);
 
 char * toDateString(Date * day, char * str);
+
+int dateEquals(Date * day1, Date * day2);
 #endif /* Date_h */
