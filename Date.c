@@ -35,25 +35,13 @@ Date * addEvent(Date * day, Event * e) {
 char * toDateString(Date * day, char * str) {
 	if(day == NULL || str == NULL) return "";
 	str[0] = '\0';
-/*
-	strcat(string, months1[day->month]);
-	strcat(string, " ");
-	char day1[3];
-	sprintf(day1, "%d", day->day);
-	strcat(string, day1);
-	strcat(string, " ");
-	char year1[5];
-	sprintf(year1, "%d", day->year);
-	strcat(string, year1);
-*/
 
 	char title[TITLELENGTH];
 	
 	strcat(str, "     \t");
-	//printtypes();
+	
 	for(int i = 0; i < 3; i++) {
-		//printtypes();
-		// setTypeNames("Mouse","cat","House");
+		//printTypes();
 		strcpy(title, returnTypes(i));
 		while(strlen(title) != TITLELENGTH - 1) {
 			strcat(title, " ");
@@ -63,7 +51,7 @@ char * toDateString(Date * day, char * str) {
 	}
 	
 	strcat(str, "\n\n");
-	//printf("%s", str);
+
 	char tempstr[2];
 	
 	for(int i = 0; i < 24; i++) {
@@ -90,6 +78,6 @@ char * toDateString(Date * day, char * str) {
 return str;
 }
 
-int dateEquals(Date * day1, Date * day2) {
-	return day1->year == day2->year && day1->month == day2->month && day1->day == day2->day;
+int dateEquals(Date * day1, int day, int month, int year) {
+	if( day1->year == year && day1->month == month && day1->day == day) return 0; return 1;
 }

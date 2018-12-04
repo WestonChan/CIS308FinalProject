@@ -27,5 +27,5 @@ Date * addEvent(Date * day, Event * e);
 
 char * toDateString(Date * day, char * str);
 
-int dateEquals(Date * day1, Date * day2);
+int dateEquals(Date * day1, int day, int month, int year);
 #endif /* Date_h */
