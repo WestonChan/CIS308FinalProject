@@ -39,12 +39,13 @@ int main(int argc, const char * argv[]) {
 void export(LinkedList l) {
 	FILE * fp = fopen("Schedule.csv", "w");
 	
-	
+	while(l != NULL) {
+		for(int i = 0; i < )		
 
-
-
-
+		l = l.next;
+	}
 	fclose(fp);
+	
 }
 
 LinkedList import() {
@@ -56,5 +57,5 @@ LinkedList import() {
 
 
 	fclose(fp);
-
+	return NULL;
 }
